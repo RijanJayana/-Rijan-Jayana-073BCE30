@@ -7,6 +7,7 @@ import csv
 
 api_key = 'QL3CDBPHW04PXYMZ'
 
+
 with open('physical_currency_list.csv', 'r') as f:
     csv_reader = dict(csv.reader(f, delimiter= ','))
 
@@ -15,8 +16,20 @@ print('Available codes are: ')
 for key, value in csv_reader.items():
     print(key,'\t\t', value)
 
+
 from_c = input('Enter a country code you want to convert from: ')
 to_c = input('Enter a country code you want to convert to: ')
+
+
+while ((from_c in csv_reader.keys()) == False) or ((to_c in csv_reader.keys()) == False):
+    if (from_c in csv_reader.keys()) == False:
+        print('You have entered wrong country code you want to cnvert from')
+        from_c = input('Enter a correct country code you want to convert from: ')
+
+    if (to_c in csv_reader.keys()) == False:
+        print('You have entered wrong country code you want to cnvert to')
+        to_c = input('Enter a correct country code you want to convert to: ')    
+
 
 amount = float(input('Enter amount you want to convert: '))
 
